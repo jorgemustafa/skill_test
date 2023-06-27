@@ -2,29 +2,21 @@ import React, {useEffect, useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faLockOpen, faSignOutAlt} from "@fortawesome/free-solid-svg-icons";
 import {Button, Container, Dropdown, Image, Nav, Navbar} from '@themesberg/react-bootstrap';
-import Profile1 from "../assets/img/team/profile-picture-1.jpg";
+import User from "../assets/img/team/user.png";
+import UserAdmin from "../assets/img/team/user-admin.png";
 import {Redirect} from "react-router-dom";
 import {Routes} from "../routes";
 import axiosClient from "../utils/axios";
+import getUserData from "../utils/getUserData";
 
 
 export default () => {
 
-    const [firstName, setFirstName] = useState('')
-    const [lastName, setLastName] = useState('')
-    const [isAuthenticated, setIsAuthenticated] = useState(true)
-
-    useEffect(() => {
-        axiosClient.get("/api/user")
-            .then((res) => {
-                setFirstName(res.data.first_name)
-                setLastName(res.data.last_name)
-                setIsAuthenticated(true);
-            })
-            .catch((error) => {
-                setIsAuthenticated(false);
-            });
-    }, []);
+    const userData = getUserData()
+    const firstName = userData.firstName
+    const lastName = userData.lastName
+    const isSuperUser = userData.isSuperUser
+    const [isAuthenticated, setIsAuthenticated] = useState(userData.isAuthenticated)
 
     const submitLogout = (e) => {
         e.preventDefault();
@@ -52,12 +44,11 @@ export default () => {
                     <Nav className="align-items-center">
                         <Dropdown as={Nav.Item}>
                             <Dropdown.Toggle as={Nav.Link} className="pt-1 px-0">
-
                                 <div className="media d-flex align-items-center">
-                                    <Image src={Profile1} className="user-avatar md-avatar rounded-circle"/>
-                                    <div className="media-body ms-2 text-dark align-items-center d-none d-lg-block">
-                                        <span className="mb-0 font-small fw-bold">{firstName} {lastName}</span>
+                                    <div className="media-body ms-2 me-2 text-dark align-items-center d-none d-lg-block">
+                                        <span className="mb-0 font-small fw-bold">{firstName} {lastName} {isSuperUser ? <>(admin)</> : <></> }</span>
                                     </div>
+                                    <Image src={isSuperUser ? UserAdmin : User} className="user-avatar md-avatar rounded-circle"/>
                                 </div>
                             </Dropdown.Toggle>
                             <Dropdown.Menu className="user-dropdown dropdown-menu-right mt-2" >

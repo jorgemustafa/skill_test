@@ -6,6 +6,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import ModalCompanyUpdate from "./ModalCompanyUpdate";
 import ModalCompanyDelete from "./ModalCompanyDelete";
 import {cnpjMask} from "../../../utils/docValidators";
+import getUserData from "../../../utils/getUserData";
 
 export default ({refresh}) => {
 
@@ -13,6 +14,7 @@ export default ({refresh}) => {
     const [openModalUpdate, setOpenModalUpdate] = useState(false)
     const [openModalDelete, setOpenModalDelete] = useState(false)
     const [idActive, setIdActive] = useState()
+    const userData = getUserData()
 
     // empresa list
     useEffect(() => {
@@ -43,16 +45,20 @@ export default ({refresh}) => {
                         <FontAwesomeIcon icon={faTimes} className="me-2"/>}
                   </span>
                 </td>
-                <td>
-                    <FontAwesomeIcon icon={faEdit} className="me-2" id="update" onClick={() => {
-                        setOpenModalUpdate(true)
-                        setIdActive(id)
-                    }}/>
-                    <FontAwesomeIcon icon={faTrash} className="me-2" id="delete" onClick={() => {
-                        setOpenModalDelete(true)
-                        setIdActive(id)
-                    }}/>
-                </td>
+                {userData.isSuperUser ?
+                    <td>
+                        <FontAwesomeIcon icon={faEdit} className="me-2" id="update" onClick={() => {
+                            setOpenModalUpdate(true)
+                            setIdActive(id)
+                        }}/>
+                        <FontAwesomeIcon icon={faTrash} className="me-2" id="delete" onClick={() => {
+                            setOpenModalDelete(true)
+                            setIdActive(id)
+                        }}/>
+                    </td>
+                    :
+                    <></>
+                }
             </tr>
         );
     };
@@ -67,7 +73,7 @@ export default ({refresh}) => {
                             <th className="border-bottom">Name</th>
                             <th className="border-bottom">CNPJ</th>
                             <th className="border-bottom">Active</th>
-                            <th className="border-bottom">Actions</th>
+                            {userData.isSuperUser ? <th className="border-bottom">Actions</th> : <></>}
                         </tr>
                         </thead>
                         <tbody>

@@ -68,7 +68,7 @@ export default (props = {}) => {
                     </div>
                     {show ?
                         <div className="pt-3 pb-3 col-md-12">
-                            <a href="https://bixtecnologia.com.br/" target={"_blank"}><Image src={imgBix}/></a>
+                            <a href="https://bixtecnologia.com.br/" target={"_blank"} rel="noopener noreferrer"><Image src={imgBix}/></a>
                         </div>
                         : null}
                     <Nav className="flex-column pt-3 pt-md-0">

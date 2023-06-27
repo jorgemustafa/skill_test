@@ -4,15 +4,15 @@ import {faAngleDown, faAngleUp, faGlobeEurope, faPaperclip, faUserPlus} from '@f
 import {Button, Card, Col, Image, Row} from '@themesberg/react-bootstrap';
 import {CircleChart, SalesValueChart, SalesValueChartphone} from "./Charts";
 
-import Profile1 from "../assets/img/team/profile-picture-1.jpg";
+// import Profile1 from "../assets/img/team/profile-picture-1.jpg";
 
 
 export const ProfileCardWidget = () => {
     return (
         <Card border="light" className="text-center p-0 mb-4">
             <Card.Body className="pb-5">
-                <Card.Img src={Profile1} alt="Neil Portrait"
-                          className="user-avatar large-avatar rounded-circle mx-auto mt-n7 mb-4"/>
+                {/*<Card.Img src={Profile1} alt="Neil Portrait"*/}
+                {/*          className="user-avatar large-avatar rounded-circle mx-auto mt-n7 mb-4"/>*/}
                 <Card.Title>Neil Sims</Card.Title>
                 <Card.Subtitle className="fw-normal">Senior Software Engineer</Card.Subtitle>
                 <Card.Text className="text-gray mb-4">New York, USA</Card.Text>

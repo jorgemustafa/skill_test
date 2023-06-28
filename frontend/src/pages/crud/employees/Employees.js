@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 import Table from "./TableEmployees";
-import {Button, Col, Form, InputGroup, Row} from "@themesberg/react-bootstrap";
+import {Button, Col, Row} from "@themesberg/react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faPlus, faSearch} from "@fortawesome/free-solid-svg-icons";
+import {faPlus} from "@fortawesome/free-solid-svg-icons";
 import ModalEmployeeCreate from "./ModalEmployeeCreate";
 import getUserData from "../../../utils/getUserData";
 
@@ -17,7 +17,8 @@ export default () => {
             <div className="d-flex justify-content-start flex-wrap flex-md-nowrap py-4">
                 <div className="d-block mb-3 mb-md-0">
                     <h4>Employees</h4>
-                    <p className="mb-0">{userData.isSuperUser ? <>Create, read, update or delete</> : <>Read employees data</>}</p>
+                    <p className="mb-0">{userData.isSuperUser ? <>Create, read, update or delete</> : <>Read employees
+                        data</>}</p>
                 </div>
             </div>
             <div className="table-settings mb-4">

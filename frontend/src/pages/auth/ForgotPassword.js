@@ -19,7 +19,7 @@ export default () => {
             "/api/password_reset/",
             {email: email}
         ).then((res) => {
-            setMessage(<p className="text-success text-center">Email de confirmação enviado!<br/>Redirecionando em
+            setMessage(<p className="text-success text-center">Confirmation email sent!<br/>Redirecting in
                 3,2,1...</p>)
             delay()
         }).catch((err) => {

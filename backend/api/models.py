@@ -21,7 +21,7 @@ class Employee(models.Model):
     dt_birth = models.DateField()
     dt_start = models.DateField()
     dt_end = models.DateField()
-    vacancy_days = models.IntegerField()
+    vacation_days = models.IntegerField()
     email = models.EmailField()
     company = models.ForeignKey(Company, on_delete=models.CASCADE)
     active = models.BooleanField(default=True)

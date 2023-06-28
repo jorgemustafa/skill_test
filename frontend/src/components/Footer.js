@@ -11,9 +11,9 @@ export default (props) => {
                     <Col className="mb-4 mb-lg-0">
                         <p className="mb-0 text-center">
                             Copyright © {`${currentYear} `}
-                            <Card.Link href="https://tourhouse.com.br" target="_blank"
+                            <Card.Link href="https://jorgemustafa.com.br" target="_blank"
                                        className="text-blue text-decoration-none fw-normal">
-                                Tour House Grupo
+                                Jorge Mustafa
                             </Card.Link>
                         </p>
                     </Col>

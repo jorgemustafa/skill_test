@@ -1,22 +1,26 @@
 {
-  "name": "thpay",
-  "description": "TH Pay é um sistema de pagamentos automatizados da Tour House",
+  "name": "skilltestemustafa",
+  "description": "Este é um sistema para avaliação Full Stack",
   "author": "Jorge Mustafa",
   "keywords": [
     "bootstrap 5",
     "react",
-    "thpay",
-    "tourhouse"
+    "skill-test"
   ],
   "license": "MIT",
   "homepage": "",
   "version": "1.0.1",
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
     "@fortawesome/free-regular-svg-icons": "^5.15.4",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "^0.1.17",
+    "@mui/lab": "^5.0.0-alpha.134",
+    "@mui/material": "^5.13.6",
+    "@mui/styled-engine-sc": "^5.12.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
@@ -39,7 +43,8 @@
     "react-router-hash-link": "^2.3.1",
     "react-scripts": "3.4.3",
     "react-transition-group": "^4.4.1",
-    "simplebar-react": "^2.3.0"
+    "simplebar-react": "^2.3.0",
+    "styled-components": "^6.0.0-rc.6"
   },
   "scripts": {
     "start": "react-scripts start",

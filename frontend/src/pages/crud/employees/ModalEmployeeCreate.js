@@ -9,13 +9,16 @@ export default ({show, close}) => {
     // employees vars
     const [name, setName] = useState('')
     const [cpf, setCpf] = useState('')
-    const [company, setCliente] = useState('')
+    const [company, setCompany] = useState('')
     const [companiesList, setCompaniesList] = useState([])
     const [dtBirth, setDtBirth] = useState('')
+    const [dtStart, setDtStart] = useState('')
+    const [dtEnd, setDtEnd] = useState(null)
+    const [vacationDays, setVacationDays] = useState('')
     const [message, setMessage] = useState(<></>)
     const [errorCpf, setErrorCpf] = useState(false)
 
-    // customer list
+    // companies list
     useEffect(() => {
         axiosClient.get("/api/company")
             .then((res) => setCompaniesList(res.data))
@@ -31,6 +34,9 @@ export default ({show, close}) => {
                 name: name,
                 cpf: cpf,
                 dt_birth: dtBirth,
+                dt_start: dtStart,
+                dt_end: dtEnd,
+                vacation_days: vacationDays,
                 company: company,
             }
         ).then((res) => {
@@ -41,6 +47,10 @@ export default ({show, close}) => {
                 setName('')
                 setCpf('')
                 setDtBirth('')
+                setCompany('')
+                setDtStart('')
+                setDtEnd('')
+                setVacationDays('')
                 setMessage(<></>)
             }, 2000)
         }).catch((err) => {
@@ -90,7 +100,7 @@ export default ({show, close}) => {
                             onChange={(e) => setCpf(e.target.value)}
                             onBlur={(e) => parseCpf(cpf)}
                         />
-                        <Form.Control.Feedback type="invalid">CPF inválido.</Form.Control.Feedback>
+                        <Form.Control.Feedback type="invalid">Invalid CPF.</Form.Control.Feedback>
                     </Form.Group>
                     <Form.Group id="dtBirth" className="mb-4">
                         <Form.Label>Date of Birth</Form.Label>
@@ -106,13 +116,13 @@ export default ({show, close}) => {
                         />
                     </Form.Group>
                     <Form.Group id="company" className="mb-4">
-                        <Form.Label>Companies</Form.Label>
+                        <Form.Label>Company</Form.Label>
                         <FormSelect
                             autoFocus
                             required
-                            name="companies"
+                            name="company"
                             value={company}
-                            onChange={(e) => setCliente(e.target.value)}
+                            onChange={(e) => setCompany(e.target.value)}
                         >
                             <option className="fw-bold" key="" value="0">
                                 --------------
@@ -123,6 +133,42 @@ export default ({show, close}) => {
                                 </option>
                             )}
                         </FormSelect>
+                    </Form.Group>
+                    <Form.Group id="dtStart" className="mb-4">
+                        <Form.Label>Date of Start</Form.Label>
+                        <Form.Control
+                            maxLength={10}
+                            autoFocus
+                            required
+                            type="text"
+                            name='dtStart'
+                            placeholder='DD/MM/YYYY'
+                            value={dtStart ? dateMask(dtStart) : ''}
+                            onChange={(e) => setDtStart(e.target.value)}
+                        />
+                    </Form.Group>
+                    <Form.Group id="dtEnd" className="mb-4">
+                        <Form.Label>Date of End</Form.Label>
+                        <Form.Control
+                            maxLength={10}
+                            autoFocus
+                            type="text"
+                            name='dtEnd'
+                            placeholder='DD/MM/YYYY'
+                            value={dtEnd ? dateMask(dtEnd) : ''}
+                            onChange={(e) => setDtEnd(e.target.value)}
+                        />
+                    </Form.Group>
+                    <Form.Group id="vacationDays" className="mb-4">
+                        <Form.Label>Vacation Days</Form.Label>
+                        <Form.Control
+                            autoFocus
+                            required
+                            type="number"
+                            name='vacationDays'
+                            value={vacationDays ? vacationDays : ''}
+                            onChange={(e) => setVacationDays(e.target.value)}
+                        />
                     </Form.Group>
                 </Modal.Body>
                 <Modal.Footer>

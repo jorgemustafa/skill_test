@@ -44,5 +44,5 @@ class EmployeeSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Employee
-        fields = ['id', 'name', 'cpf', 'dt_start', 'dt_end', 'vacancy_days', 'dt_birth', 'company', 'company_name',
+        fields = ['id', 'name', 'cpf', 'dt_start', 'dt_end', 'vacation_days', 'dt_birth', 'company', 'company_name',
                   'active']

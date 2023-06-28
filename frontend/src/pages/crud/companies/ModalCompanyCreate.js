@@ -75,7 +75,7 @@ export default ({show, close}) => {
                             onChange={(e) => setCnpj(e.target.value)}
                             onBlur={(e) => parseCnpj(cnpj)}
                         />
-                        <Form.Control.Feedback type="invalid">Inválid CNPJ.</Form.Control.Feedback>
+                        <Form.Control.Feedback type="invalid">Invalid CNPJ.</Form.Control.Feedback>
                     </Form.Group>
                 </Modal.Body>
                 <Modal.Footer>

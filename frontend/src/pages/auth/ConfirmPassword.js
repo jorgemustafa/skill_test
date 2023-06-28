@@ -26,7 +26,7 @@ export default (props) => {
             }
         ).then((res) => {
             setMessage(
-                <p className="text-success text-center">Senha alterada com sucesso!<br/>Redirecionando em 3,2,1...</p>
+                <p className="text-success text-center">Password changed with successfully!<br/>Redirect em 3,2,1...</p>
             )
             delay()
         }).catch((err) => {
@@ -52,15 +52,15 @@ export default (props) => {
                     <Row className="justify-content-center">
                         <p className="text-center">
                             <Card.Link as={Link} to={Routes.Signin.path} className="text-gray-700">
-                                <FontAwesomeIcon icon={faAngleLeft} className="me-2"/> Voltar para Login
+                                <FontAwesomeIcon icon={faAngleLeft} className="me-2"/> Back to Login
                             </Card.Link>
                         </p>
                         <Col xs={12} className="d-flex align-items-center justify-content-center">
                             <div className="bg-white shadow-soft border rounded border-light p-4 p-lg-5 w-100 fmxw-500">
-                                <h3 className="mb-4">Redefinir Senha</h3>
+                                <h3 className="mb-4">Reset password</h3>
                                 <Form className="mb-4" onSubmit={submitConfirmPass}>
                                     <Form.Group id="password" className="mb-4">
-                                        <Form.Label>Nova Senha</Form.Label>
+                                        <Form.Label>New Password</Form.Label>
                                         <InputGroup>
                                             <InputGroup.Text>
                                                 <FontAwesomeIcon icon={faUnlockAlt}/>
@@ -68,7 +68,7 @@ export default (props) => {
                                             <Form.Control
                                                 required
                                                 type={visible ? "text" : "password"}
-                                                placeholder="NovaSenha@123"
+                                                placeholder="NewPass@123"
                                             />
                                             <Button onClick={toggleVisibility}>
                                                 <FontAwesomeIcon icon={faEye}/>
@@ -76,7 +76,7 @@ export default (props) => {
                                         </InputGroup>
                                     </Form.Group>
                                     <Form.Group id="confirmPassword" className="mb-4">
-                                        <Form.Label>Confirmar Senha</Form.Label>
+                                        <Form.Label>Confirm Password</Form.Label>
                                         <InputGroup>
                                             <InputGroup.Text>
                                                 <FontAwesomeIcon icon={faUnlockAlt}/>
@@ -84,7 +84,7 @@ export default (props) => {
                                             <Form.Control
                                                 required
                                                 type={visible ? "text" : "password"}
-                                                placeholder="NovaSenha@123"
+                                                placeholder="NewPass@123"
                                                 value={password}
                                                 onChange={(e) => setPassword(e.target.value)}
                                             />
@@ -94,7 +94,7 @@ export default (props) => {
                                         </InputGroup>
                                     </Form.Group>
                                     <Button variant="primary" type="submit" className="w-100">
-                                        Confirmar
+                                        Confirm
                                     </Button>
                                     <div className="d-flex justify-content-center align-items-center mt-4">
                                         {message}

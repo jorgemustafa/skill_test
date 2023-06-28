@@ -80,7 +80,7 @@ def password_reset_token_created(sender, instance, reset_password_token, *args, 
         'Password Reset for Bix Test',
         # message:
         f'Hello, you have requested to reset your password! Click the link to create a new password:'
-        f'http://localhost:3000/new-password/confirm/{reset_password_token.key}',
+        f'http://localhost:3000/reset-password/confirm/{reset_password_token.key}',
         # from:
         'noreply@somehost.local',
         # to:

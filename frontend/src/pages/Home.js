@@ -1,57 +1,81 @@
-import React from "react";
-import {faCashRegister, faChartLine} from '@fortawesome/free-solid-svg-icons';
-import {Col, Row} from '@themesberg/react-bootstrap';
+import React, {useEffect, useState} from "react";
+import Timeline from '@mui/lab/Timeline';
+import TimelineItem from '@mui/lab/TimelineItem';
+import TimelineSeparator from '@mui/lab/TimelineSeparator';
+import TimelineConnector from '@mui/lab/TimelineConnector';
+import TimelineContent from '@mui/lab/TimelineContent';
+import TimelineDot from '@mui/lab/TimelineDot';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
 
-import {CircleChartWidget, CounterWidget, SalesValueWidget, SalesValueWidgetPhone,} from "../components/Widgets";
+import axiosClient from "../utils/axios";
 
-import {trafficShares} from "../data/charts";
+export default function CustomizedTimeline() {
+    const [employees, setEmployees] = useState([]);
 
-export default () => {
+    // get employees data
+    useEffect(() => {
+        axiosClient.get("/api/employee")
+            .then((res) => {
+                setEmployees(res.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }, []);
+
     return (
-        <>
-            <Row className="justify-content-md-center">
-                <Col xs={12} className="mb-4 d-none d-sm-block">
-                    <SalesValueWidget
-                        title="Sales Value"
-                        value="10,567"
-                        percentage={10.57}
-                    />
-                </Col>
-                <Col xs={12} className="mb-4 d-sm-none">
-                    <SalesValueWidgetPhone
-                        title="Sales Value"
-                        value="10,567"
-                        percentage={10.57}
-                    />
-                </Col>
-                <Col xs={12} sm={6} xl={4} className="mb-4">
-                    <CounterWidget
-                        category="Customers"
-                        title="345k"
-                        period="Feb 1 - Apr 1"
-                        percentage={18.2}
-                        icon={faChartLine}
-                        iconColor="shape-secondary"
-                    />
-                </Col>
-
-                <Col xs={12} sm={6} xl={4} className="mb-4">
-                    <CounterWidget
-                        category="Revenue"
-                        title="$43,594"
-                        period="Feb 1 - Apr 1"
-                        percentage={28.4}
-                        icon={faCashRegister}
-                        iconColor="shape-tertiary"
-                    />
-                </Col>
-
-                <Col xs={12} sm={6} xl={4} className="mb-4">
-                    <CircleChartWidget
-                        title="Traffic Share"
-                        data={trafficShares}/>
-                </Col>
-            </Row>
-        </>
+        <Box sx={{ bgcolor: '#f4f4f4', p: 4 }}>
+            <Typography variant="h4" component="h4" align="center" gutterBottom sx={{ color: '#333', pb: 4 }}>
+                Employees Timeline
+            </Typography>
+            <Timeline position="alternate">
+                {employees.map((employee) => (
+                    <TimelineItem key={employee.id}>
+                        <TimelineSeparator>
+                            <TimelineDot color="primary" variant="outlined" sx={{ borderColor: '#3f51b5' }} />
+                            <TimelineConnector sx={{ bgcolor: '#3f51b5' }} />
+                        </TimelineSeparator>
+                        <TimelineContent sx={{ py: '30px', px: 2 }}>
+                            <Typography variant="h6" component="h6" sx={{ color: '#3f51b5', pb: 1 }}>
+                                {employee.name}
+                            </Typography>
+                            <div>
+                                <Typography variant="subtitle1" color="textSecondary" component="span">
+                                    Company:&nbsp;
+                                </Typography>
+                                <Typography variant="body1" component="span">
+                                    {employee.company_name}
+                                </Typography>
+                            </div>
+                            <div>
+                                <Typography variant="subtitle1" color="textSecondary" component="span">
+                                    Date Start:&nbsp;
+                                </Typography>
+                                <Typography variant="body1" component="span">
+                                    {employee.dt_start}
+                                </Typography>
+                            </div>
+                            <div>
+                                <Typography variant="subtitle1" color="textSecondary" component="span">
+                                    Date End:&nbsp;
+                                </Typography>
+                                <Typography variant="body1" component="span">
+                                    {employee.dt_end}
+                                </Typography>
+                            </div>
+                            <div>
+                                <Typography variant="subtitle1" color="textSecondary" component="span">
+                                    Vacation Days:&nbsp;
+                                </Typography>
+                                <Typography variant="body1" component="span">
+                                    {employee.vacation_days}
+                                </Typography>
+                            </div>
+                        </TimelineContent>
+                    </TimelineItem>
+                ))}
+            </Timeline>
+        </Box>
     );
-};
+}

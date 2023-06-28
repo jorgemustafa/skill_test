@@ -1,10 +1,9 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import Table from "./TableCompanies";
 import {Button, Col, Row} from "@themesberg/react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlus} from "@fortawesome/free-solid-svg-icons";
 import ModalCompanyCreate from "./ModalCompanyCreate";
-import axiosClient from "../../../utils/axios";
 import getUserData from "../../../utils/getUserData";
 
 
@@ -17,7 +16,8 @@ export default () => {
             <div className="d-flex justify-content-start flex-wrap flex-md-nowrap py-4">
                 <div className="d-block mb-3 mb-md-0">
                     <h4>Companies</h4>
-                    <p className="mb-0">{userData.isSuperUser ? <>Create, read, update or delete</> : <>Read companies data</>}</p>
+                    <p className="mb-0">{userData.isSuperUser ? <>Create, read, update or delete</> : <>Read companies
+                        data</>}</p>
                 </div>
             </div>
             <div className="table-settings mb-4">

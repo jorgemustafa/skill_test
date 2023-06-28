@@ -11,5 +11,5 @@ class CompanyAdmin(admin.ModelAdmin):
 
 @admin.register(Employee)
 class EmployeeAdmin(admin.ModelAdmin):
-    list_display = ['name', 'cpf', 'email', 'company', 'vacancy_days', 'active']
+    list_display = ['name', 'cpf', 'email', 'company', 'vacation_days', 'active']
     readonly_fields = ['created_at']

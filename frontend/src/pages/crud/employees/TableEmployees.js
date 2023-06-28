@@ -24,7 +24,7 @@ export default ({refresh}) => {
     }, [refresh, openModalDelete, openModalUpdate]);
 
     const TableRow = (props) => {
-        const {id, name, cpf, dt_birth, company_name, active} = props;
+        const {id, name, cpf, dt_birth, company_name, dt_start, dt_end, vacation_days, active} = props;
         const statusVariant = active ? "success" : "danger"
 
         return (
@@ -47,6 +47,21 @@ export default ({refresh}) => {
                 <td>
                   <span className="fw-normal">
                     {company_name}
+                  </span>
+                </td>
+                <td>
+                  <span className="fw-normal">
+                    {dt_start}
+                  </span>
+                </td>
+                <td>
+                  <span className="fw-normal">
+                    {dt_end}
+                  </span>
+                </td>
+                <td>
+                  <span className="fw-normal">
+                    {vacation_days}
                   </span>
                 </td>
                 <td>
@@ -84,6 +99,9 @@ export default ({refresh}) => {
                             <th className="border-bottom">CPF</th>
                             <th className="border-bottom">Date of Birth</th>
                             <th className="border-bottom">Company</th>
+                            <th className="border-bottom">Date of Start</th>
+                            <th className="border-bottom">Date of End</th>
+                            <th className="border-bottom">Vacation Days</th>
                             <th className="border-bottom">Active</th>
                             {userData.isSuperUser ? <th className="border-bottom">Actions</th> : <></>}
                         </tr>

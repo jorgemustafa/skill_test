@@ -29,7 +29,7 @@ export default () => {
             if (res.status === 200) {
                 setMessage(
                     <p className="text-success text-center">
-                        Senha alterada com sucesso!<br/>Redirecionando em 3,2,1...
+                        Password changed with successfully!<br/>Redirecting em 3,2,1...
                     </p>
                 )
                 delay()

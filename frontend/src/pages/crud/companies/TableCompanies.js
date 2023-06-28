@@ -16,7 +16,7 @@ export default ({refresh}) => {
     const [idActive, setIdActive] = useState()
     const userData = getUserData()
 
-    // empresa list
+    // company list
     useEffect(() => {
         axiosClient.get("/api/company")
             .then((res) => setCompaniesList(res.data))

@@ -4,12 +4,12 @@ from .models import Company, Employee
 
 
 @admin.register(Company)
-class TransacaoAdmin(admin.ModelAdmin):
+class CompanyAdmin(admin.ModelAdmin):
     list_display = ['name', 'cnpj', 'active']
     readonly_fields = ['created_at']
 
 
 @admin.register(Employee)
-class ResponsavelFinanceiroAdmin(admin.ModelAdmin):
-    list_display = ['name', 'cpf', 'email', 'company', 'active']
+class EmployeeAdmin(admin.ModelAdmin):
+    list_display = ['name', 'cpf', 'email', 'company', 'vacancy_days', 'active']
     readonly_fields = ['created_at']

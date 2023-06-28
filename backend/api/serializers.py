@@ -39,7 +39,10 @@ class CompanySerializer(serializers.ModelSerializer):
 class EmployeeSerializer(serializers.ModelSerializer):
     company_name = serializers.ReadOnlyField(source='company.name', required=False)
     dt_birth = serializers.DateField(format='%d/%m/%Y', input_formats=['%d/%m/%Y'])
+    dt_start = serializers.DateField(format='%d/%m/%Y', input_formats=['%d/%m/%Y'])
+    dt_end = serializers.DateField(format='%d/%m/%Y', input_formats=['%d/%m/%Y'], required=False)
 
     class Meta:
         model = Employee
-        fields = ['id', 'name', 'cpf', 'dt_birth', 'company', 'company_name', 'active']
+        fields = ['id', 'name', 'cpf', 'dt_start', 'dt_end', 'vacancy_days', 'dt_birth', 'company', 'company_name',
+                  'active']

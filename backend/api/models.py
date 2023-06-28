@@ -18,7 +18,10 @@ class Company(models.Model):
 class Employee(models.Model):
     name = models.CharField(max_length=64)
     cpf = models.CharField(max_length=64, unique=True)
-    dt_birth = models.DateField(max_length=64)
+    dt_birth = models.DateField()
+    dt_start = models.DateField()
+    dt_end = models.DateField()
+    vacancy_days = models.IntegerField()
     email = models.EmailField()
     company = models.ForeignKey(Company, on_delete=models.CASCADE)
     active = models.BooleanField(default=True)

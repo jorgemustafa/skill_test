@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faLockOpen, faSignOutAlt} from "@fortawesome/free-solid-svg-icons";
 import {Button, Container, Dropdown, Image, Nav, Navbar} from '@themesberg/react-bootstrap';
@@ -7,16 +7,26 @@ import UserAdmin from "../assets/img/team/user-admin.png";
 import {Redirect} from "react-router-dom";
 import {Routes} from "../routes";
 import axiosClient from "../utils/axios";
-import getUserData from "../utils/getUserData";
 
 
 export default () => {
+    const [firstName, setFirstName] = useState('')
+    const [lastName, setLastName] = useState('')
+    const [isSuperUser, setIsSuperUser] = useState(false)
+    const [isAuthenticated, setIsAuthenticated] = useState(true)
 
-    const userData = getUserData()
-    const firstName = userData.firstName
-    const lastName = userData.lastName
-    const isSuperUser = userData.isSuperUser
-    const [isAuthenticated, setIsAuthenticated] = useState(userData.isAuthenticated)
+    useEffect(() => {
+        axiosClient.get("/api/user")
+            .then((res) => {
+                setFirstName(res.data.first_name)
+                setLastName(res.data.last_name)
+                setIsSuperUser(res.data.is_superuser);
+                setIsAuthenticated(true);
+            })
+            .catch((error) => {
+                setIsAuthenticated(false);
+            });
+    }, []);
 
     const submitLogout = (e) => {
         e.preventDefault();
@@ -58,7 +68,8 @@ export default () => {
                                 <Button variant="transparent" size="sm"
                                         className="text-start col-md-12">
                                     <Dropdown.Item className="fw-bold" href={Routes.ChangePassword.path}>
-                                        <FontAwesomeIcon icon={faLockOpen} className="text-success me-2"/> Change Password
+                                        <FontAwesomeIcon icon={faLockOpen} className="text-success me-2"/> Change
+                                        Password
                                     </Dropdown.Item>
                                 </Button>
                                 <Button onClick={submitLogout} variant="transparent" size="sm"

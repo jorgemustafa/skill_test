@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_extensions',
+    'drf_spectacular',
     'corsheaders',
     'rest_framework',
     'django_rest_passwordreset',
@@ -93,6 +94,14 @@ REST_FRAMEWORK = {
     'DATE_FORMAT': "%d/%m/%Y",
     'DATETIME_FORMAT': "%d/%m/%Y - %H:%M",
     'DATE_INPUT_FORMATS': ["%d-%m-%Y"],
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Skill Test',
+    'DESCRIPTION': 'This is a Swagger of project Skill Test from Jorge Mustafa',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
 }
 
 # Internationalization
